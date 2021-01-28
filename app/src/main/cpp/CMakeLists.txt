@@ -26,9 +26,11 @@ add_library( # Sets the name of the library.
 target_include_directories(
     libjni_terminal
     SYSTEM
+    PUBLIC liblog/include_vndk/
     PUBLIC libutils/include/
     PUBLIC core/jni/include/
     PUBLIC libnativehelper/include/
+    PUBLIC libnativehelper/header_only_include/
     PUBLIC libvterm/include )
 
 # Searches for a specified prebuilt library and stores the path as a
