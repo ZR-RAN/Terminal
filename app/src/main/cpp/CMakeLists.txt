@@ -23,15 +23,41 @@ add_library( # Sets the name of the library.
     # Provides a relative path to your source file(s).
     jni_init.cpp com_android_terminal_Terminal.cpp )
 
-target_include_directories(
-    libjni_terminal
+add_library(
+    libvterm
+    STATIC
+    libvterm/src/encoding.c
+    libvterm/src/input.c
+    libvterm/src/keyboard.c
+    libvterm/src/mouse.c
+    libvterm/src/parser.c
+    libvterm/src/pen.c
+    libvterm/src/screen.c
+    libvterm/src/state.c
+    libvterm/src/unicode.c
+    libvterm/src/vterm.c )
+
+include_directories(
     SYSTEM
-    PUBLIC liblog/include_vndk/
-    PUBLIC libutils/include/
-    PUBLIC core/jni/include/
-    PUBLIC libnativehelper/include/
-    PUBLIC libnativehelper/header_only_include/
+    PUBLIC liblog/include_vndk
+    PUBLIC libutils/include
+    PUBLIC core/jni/include
+    PUBLIC libnativehelper/include
+    PUBLIC libnativehelper/header_only_include
     PUBLIC libvterm/include )
+
+target_link_libraries(
+    libjni_terminal
+    -Llib/aarch64
+    -landroidfw
+    -landroid_runtime
+    -llog
+    -lnativehelper
+    -lutils )
+
+target_link_libraries(
+    libjni_terminal
+    libvterm )
 
 # Searches for a specified prebuilt library and stores the path as a
 # variable. Because CMake includes system libraries in the search path by
