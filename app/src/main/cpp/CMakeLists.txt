@@ -15,13 +15,21 @@ project("terminal")
 # Gradle automatically packages shared libraries with your APK.
 
 add_library( # Sets the name of the library.
-             libjni_terminal
+    libjni_terminal
 
-             # Sets the library as a shared library.
-             SHARED
+    # Sets the library as a shared library.
+    SHARED
 
-             # Provides a relative path to your source file(s).
-             jni_init.cpp com_android_terminal_Terminal.cpp )
+    # Provides a relative path to your source file(s).
+    jni_init.cpp com_android_terminal_Terminal.cpp )
+
+target_include_directories(
+    libjni_terminal
+    SYSTEM
+    PUBLIC libutils/include/
+    PUBLIC core/jni/include/
+    PUBLIC libnativehelper/include/
+    PUBLIC libvterm/include )
 
 # Searches for a specified prebuilt library and stores the path as a
 # variable. Because CMake includes system libraries in the search path by
