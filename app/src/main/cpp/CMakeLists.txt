@@ -15,7 +15,7 @@ project("terminal")
 # Gradle automatically packages shared libraries with your APK.
 
 add_library( # Sets the name of the library.
-    libjni_terminal
+    jni_terminal
 
     # Sets the library as a shared library.
     SHARED
@@ -103,7 +103,7 @@ set_target_properties(
     ${CMAKE_CURRENT_SOURCE_DIR}/lib/aarch64/libutils.so )
 
 target_link_libraries(
-    libjni_terminal
+    jni_terminal
     libandroidfw
     libandroid_runtime
     liblog
@@ -111,7 +111,7 @@ target_link_libraries(
     libutils )
 
 target_link_libraries(
-    libjni_terminal
+    jni_terminal
     libvterm )
 
 # Searches for a specified prebuilt library and stores the path as a
