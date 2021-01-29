@@ -48,14 +48,67 @@ include_directories(
     PUBLIC libsystem/include
     PUBLIC libvterm/include )
 
+#target_link_libraries(
+#    libjni_terminal
+#    -Llib/aarch64
+#    -landroidfw
+#    -landroid_runtime
+#    -llog
+#    -lnativehelper
+#    -lutils )
+
+add_library(
+    libandroidfw
+    SHARED
+    IMPORTED )
+
+add_library(
+    libandroid_runtime
+    SHARED
+    IMPORTED )
+
+add_library(
+    liblog
+    SHARED
+    IMPORTED )
+
+add_library(
+    libnativehelper
+    SHARED
+    IMPORTED )
+
+add_library(
+    libutils
+    SHARED
+    IMPORTED )
+
+set_target_properties(
+    libandroidfw PROPERTIES IMPORTED_LOCATION
+    ${CMAKE_CURRENT_SOURCE_DIR}/lib/aarch64/libandroidfw.so )
+
+set_target_properties(
+    libandroid_runtime PROPERTIES IMPORTED_LOCATION
+    ${CMAKE_CURRENT_SOURCE_DIR}/lib/aarch64/libandroid_runtime.so )
+
+set_target_properties(
+    liblog PROPERTIES IMPORTED_LOCATION
+    ${CMAKE_CURRENT_SOURCE_DIR}/lib/aarch64/liblog.so )
+
+set_target_properties(
+    libnativehelper PROPERTIES IMPORTED_LOCATION
+    ${CMAKE_CURRENT_SOURCE_DIR}/lib/aarch64/libnativehelper.so )
+
+set_target_properties(
+    libutils PROPERTIES IMPORTED_LOCATION
+    ${CMAKE_CURRENT_SOURCE_DIR}/lib/aarch64/libutils.so )
+
 target_link_libraries(
     libjni_terminal
-    -Llib/aarch64
-    -landroidfw
-    -landroid_runtime
-    -llog
-    -lnativehelper
-    -lutils )
+    libandroidfw
+    libandroid_runtime
+    liblog
+    libnativehelper
+    libutils )
 
 target_link_libraries(
     libjni_terminal
