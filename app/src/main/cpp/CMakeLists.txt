@@ -39,11 +39,13 @@ add_library(
 
 include_directories(
     SYSTEM
+    PUBLIC binder/include
     PUBLIC liblog/include_vndk
     PUBLIC libutils/include
     PUBLIC core/jni/include
     PUBLIC libnativehelper/include
     PUBLIC libnativehelper/header_only_include
+    PUBLIC libsystem/include
     PUBLIC libvterm/include )
 
 target_link_libraries(

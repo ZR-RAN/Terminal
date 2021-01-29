@@ -19,6 +19,7 @@ package com.android.terminal;
 import static com.android.terminal.Terminal.TAG;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Paint;
 import android.graphics.Paint.FontMetrics;
 import android.graphics.Typeface;
@@ -38,6 +39,7 @@ import android.widget.ListView;
 
 import com.android.terminal.Terminal.CellRun;
 import com.android.terminal.Terminal.TerminalClient;
+
 
 /**
  * Rendered contents of a {@link Terminal} session.
@@ -136,7 +138,8 @@ public class TerminalView extends ListView {
     }
 
     public TerminalView(Context context, AttributeSet attrs) {
-        this(context, attrs, com.android.internal.R.attr.listViewStyle);
+//        this(context, attrs, com.android.internal.R.attr.listViewStyle);
+        this(context, attrs, android.R.attr.listViewStyle);
     }
 
     public TerminalView(Context context, AttributeSet attrs, int defStyle) {
